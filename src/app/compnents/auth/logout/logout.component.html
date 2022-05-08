@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="card mt-5" >
+    <div class="card-header">
+      Featured
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Log out</h5>
+      <p class="card-text">Logged Out from all Devices ?</p>
+      <div class="row mb-3">
+        <div class="col">
+          <input type="checkbox" name="allDevices" [(ngModel)]="checkbox"> All Devices
+        </div>
+      </div>
+      <button (click)="logout()" class="btn btn-primary">Logout</button>
+    </div>
+  </div>
+</div>
