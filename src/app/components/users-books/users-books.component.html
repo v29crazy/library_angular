@@ -1,0 +1,38 @@
+
+<div class="nk-block-head nk-block-head-sm">
+  <div class="nk-block-between">
+    <div class="nk-block-head-content">
+      <h3 class="nk-block-title page-title">View Author Books</h3>
+      <div class="nk-block-des text-soft">
+        <p>view author books here.</p>
+      </div>
+    </div><!-- .nk-block-head-content -->
+    <div class="nk-block-head-content">
+      <div class="toggle-wrap nk-block-tools-toggle">
+        <a href="javascript:void(0);" class="btn btn-icon btn-trigger toggle-expand mr-n1" data-target="pageMenu"><em class="icon ni ni-more-v"></em></a>
+        <div class="toggle-expand-content" data-content="pageMenu">
+          <ul class="nk-block-tools g-3">
+            <li><button routerLink="/dashboard"
+                        class="btn btn-white btn-dim btn-outline-primary"><em class="icon ni ni-first"></em><span>Back</span></button></li>
+          </ul>
+        </div><!-- .toggle-expand-content -->
+      </div><!-- .toggle-wrap -->
+    </div><!-- .nk-block-head-content -->
+  </div><!-- .nk-block-between -->
+</div><!-- .nk-block-head -->
+
+<div class="nk-block">
+
+  <div class="center mt-5">
+    <ag-grid-angular
+      style="width: 910px; height: 520px;"
+      class="ag-theme-alpine"
+      [rowData]="rowData | async"
+      [pagination]=true
+      [columnDefs]="columnDefs"
+      [paginationPageSize] =10>
+    </ag-grid-angular>
+
+  </div>
+</div>
+

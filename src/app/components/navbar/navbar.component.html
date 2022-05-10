@@ -1,38 +1,82 @@
-<script src="../../app-routing.module.ts"></script>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container">
 
-    <a class="navbar-brand" href="#">Library</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/login" *ngIf="!loggedIn">Log In</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/register" *ngIf="!loggedIn">Register</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/forgot-password" *ngIf="!loggedIn">Forget Password</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/reset-password" *ngIf="loggedIn">Reset Password</a>
-        </li>
-        <li class="nav-item dropdown" *ngIf="loggedIn">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-            <em class="icon ni ni-user-fill"></em>
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item"  routerLink="/dashboard">Dashboard</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item"  routerLink="/logout">Logout</a>
+<div class="nk-header nk-header-fluid is-theme">
+  <div class="container-xl wide-xl">
+    <div class="nk-header-wrap">
+      <div class="nk-menu-trigger mr-sm-2 d-lg-none">
+        <a href="javascript:void(0);" class="nk-nav-toggle nk-quick-nav-icon" data-target="headerNav"><em class="icon ni ni-menu"></em></a>
+      </div>
+      <div class="nk-header-brand">
+        <a routerLink="/" class="logo-link">
+          <img class="logo-light logo-img" src="./assets/admin-dashlite/images/vmw.png" srcset="./images/logo2x.png 2x" alt="logo">
+          <img class="logo-dark logo-img" src="./assets/admin-dashlite/images/vmw.png" srcset="./images/logo-dark2x.png 2x" alt="logo-dark">
+        </a>
+      </div><!-- .nk-header-brand -->
+      <div class="nk-header-menu" data-content="headerNav">
+        <div class="nk-header-mobile">
+          <div class="nk-header-brand">
+            <a routerLink="/" class="logo-link">
+              <img class="logo-light logo-img" src="./assets/admin-dashlite/images/vmw.png" srcset="./images/logo2x.png 2x" alt="logo">
+              <img class="logo-dark logo-img" src="./assets/admin-dashlite/images/vmw.png" srcset="./images/logo-dark2x.png 2x" alt="logo-dark">
+            </a>
           </div>
-        </li>
-      </ul>
-    </div>
-
-  </div>
-</nav>
+          <div class="nk-menu-trigger mr-n2">
+            <a href="javascript:void(0);" class="nk-nav-toggle nk-quick-nav-icon" data-target="headerNav"><em class="icon ni ni-arrow-left"></em></a>
+          </div>
+        </div>
+      </div><!-- .nk-header-menu -->
+      <div  class="nk-header-tools">
+        <ul  *ngIf="!loggedIn" class="nk-menu nk-menu-main ui-s2">
+          <li class="nk-menu-item "  >
+            <a routerLink="/login" class="nk-menu-link ">
+              <span class="nk-menu-text">Login</span>
+            </a>
+          </li><!-- .nk-menu-item -->
+          <li class="nk-menu-item "  *ngIf="!loggedIn">
+            <a routerLink="/register" class="nk-menu-link ">
+              <span class="nk-menu-text">Register</span>
+            </a>
+          </li><!-- .nk-menu-item -->
+        </ul><!-- .nk-menu -->
+        <ul *ngIf="loggedIn" class="nk-quick-nav">
+          <li class="dropdown user-dropdown order-sm-first">
+            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+              <div class="user-toggle">
+                <div class="user-avatar sm">
+                  <em class="icon ni ni-user-alt"></em>
+                </div>
+                <div class="user-info d-none d-xl-block">
+                  <div class="user-status">{{userRole}}</div>
+                  <div class="user-name dropdown-indicator">{{userName}}</div>
+                </div>
+              </div>
+            </a>
+            <div  class="dropdown-menu dropdown-menu-md dropdown-menu-right dropdown-menu-s1 is-light">
+              <div class="dropdown-inner user-card-wrap bg-lighter d-none d-md-block">
+                <div class="user-card">
+                  <div class="user-avatar">
+                    <span><em class="icon ni ni-home-alt"></em></span>
+                  </div>
+                  <div class="user-info">
+                    <span class="lead-text">{{userName}}</span>
+                    <span class="sub-text">{{userEmail}}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="dropdown-inner">
+                <ul class="link-list">
+                  <li><a routerLink="/dashboard"><em class="icon ni ni-user-alt"></em><span>Dashboard</span></a></li>
+                </ul>
+              </div>
+              <div class="dropdown-inner">
+                <ul class="link-list">
+                  <li><a routerLink="/logout"><em class="icon ni ni-signout"></em><span>Sign out</span></a></li>
+                </ul>
+              </div>
+            </div>
+          </li><!-- .dropdown -->
+        </ul><!-- .nk-quick-nav -->
+      </div><!-- .nk-header-tools -->
+    </div><!-- .nk-header-wrap -->
+  </div><!-- .container-fliud -->
+</div>

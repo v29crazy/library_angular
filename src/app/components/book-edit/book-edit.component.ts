@@ -30,7 +30,7 @@ export class BookEditComponent implements OnInit {
   onEditSubmit(bookId:any){
     this.bookService.updateBook(this.bookId,this.book).subscribe((res)=>{
       console.log(res);
-      this.router.navigate(['/books'])
+      this.router.navigate(['/dashboard'])
     },(err)=>{
       console.log(err);
     });

@@ -11,6 +11,8 @@ import {AuthenticationService} from "../../../services/authentication.service";
 })
 export class LoginComponent implements OnInit {
 
+  authUser:any;
+
   constructor( private router:Router, private  auth:AuthenticationService) { }
 
   ngOnInit(): void {
@@ -21,10 +23,15 @@ export class LoginComponent implements OnInit {
     const password = form.value.password;
     // console.log(email,password);
     this.auth.login(email,password).subscribe((res:any)=>{
-        // console.log(res);
-        localStorage.setItem('user', JSON.stringify(res))
-
-        this.router.navigate(['/dashboard']);
+        this.authUser=JSON.stringify(res);
+        localStorage.setItem('user', this.authUser);
+        this.authUser=JSON.parse(JSON.stringify(res));
+        console.log(this.authUser);
+        if(this.authUser.is_admin==1){
+          this.router.navigate(['/user']);
+        }else{
+          this.router.navigate(['/dashboard']);
+        }
       }, err=>{
         console.log(err);
       })

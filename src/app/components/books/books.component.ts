@@ -30,10 +30,6 @@ export class BooksComponent implements OnInit {
   }
 
   onSubmit(form:NgForm){
-    const localData:any = localStorage.getItem('user');
-    const userObj = JSON.parse(localData);
-    this.book.user_id = userObj.id;
-
     this.bookService.addBooks(this.book).subscribe((res)=>{
       console.log(this.book);
       this.getBooks();

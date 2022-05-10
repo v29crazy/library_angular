@@ -1,13 +1,88 @@
-<div class="container">
-  <div class="card mt-5" *ngIf="user">
-    <div class="card-header">
-      Featured
-    </div>
-    <div class="card-body">
-      <h5 class="card-title">User Details</h5>
-      <p class="card-text">Name : {{user.name}}</p>
-      <p class="card-text">Email : {{user.email}}</p>
-      <a routerLink="/logout" class="btn btn-primary">Logout</a>
+
+<div class="nk-block-head nk-block-head-sm">
+  <div class="nk-block-between">
+    <div class="nk-block-head-content">
+      <h3 class="nk-block-title page-title">Manage My Books</h3>
+      <div class="nk-block-des text-soft">
+        <p>Manage all books from here.</p>
+      </div>
+    </div><!-- .nk-block-head-content -->
+    <div class="nk-block-head-content">
+      <div class="toggle-wrap nk-block-tools-toggle">
+        <a href="javascript:void(0);" class="btn btn-icon btn-trigger toggle-expand mr-n1" data-target="pageMenu"><em class="icon ni ni-more-v"></em></a>
+        <div class="toggle-expand-content" data-content="pageMenu">
+          <ul class="nk-block-tools g-3">
+            <li><button #openModalButton type="button"
+                        data-toggle="modal" data-target="#bookAddModal"
+                        class="btn btn-white btn-dim btn-outline-primary"><em class="icon ni ni-plus"></em><span>Add Book</span></button></li>
+          </ul>
+        </div><!-- .toggle-expand-content -->
+      </div><!-- .toggle-wrap -->
+    </div><!-- .nk-block-head-content -->
+  </div><!-- .nk-block-between -->
+</div><!-- .nk-block-head -->
+
+<div class="nk-block">
+  <div class="center mt-5">
+    <ag-grid-angular #grid
+                     style="width: 1010px; height: 520px;"
+                     class="ag-theme-alpine"
+                     [rowData]="rowData | async"
+                     [pagination]=true
+                     [columnDefs]="columnDefs"
+                     [paginationPageSize] =10>
+    </ag-grid-angular>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<div class="modal fade" #bookAddModal id="bookAddModal" tabindex="-1" aria-labelledby="bookAddModalLabel" aria-hidden="true">
+  <div class="modal-dialog  modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="bookAddModalLabel">Publish Your Book</h5>
+        <button #closeButton id="closeModal" type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="onSubmit(addBookForm)" #addBookForm="ngForm">
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" name="title" class="form-control" [(ngModel)]="book.title">
+          </div>
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea name="description"  [(ngModel)]="book.description" id="description" cols="30" rows="5" class="form-control"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="content">Content</label>
+            <textarea name="content" [(ngModel)]="book.content" id="content" cols="30" rows="10" class="form-control"></textarea>
+
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="customFile">Default File Upload</label>
+            <div class="form-control-wrap">
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" id="customFile"  >
+                <label class="custom-file-label" for="customFile">Choose file</label>
+              </div>
+            </div>
+          </div>
+
+          <button class="btn btn-dark btn-sm mt-4"  >Submit</button>
+        </form>
+      </div>
     </div>
   </div>
 </div>
+
+
